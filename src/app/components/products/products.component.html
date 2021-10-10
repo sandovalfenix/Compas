@@ -1,0 +1,101 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 my-3">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="text-center">Agregar Productos</h3>
+        </div>
+
+        <div class="card-body">
+          <form [formGroup]="form" (ngSubmit)="addProduct()">
+            <div class="row my-3">
+              <div class="col-12">
+                <div class="input-group my-2">
+                  <span class="input-group-text"
+                    ><i class="fas fa-box"></i
+                  ></span>
+                  <input
+                    type="text"
+                    formControlName="name"
+                    placeholder="Nombre Producto"
+                    class="form-control"
+                    [class.is-valid]="this.form.get('name')?.valid"
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <div class="input-group">
+                  <span class="input-group-text"
+                    ><i class="fas fa-money-bill"></i
+                  ></span>
+                  <input
+                    type="number"
+                    formControlName="price"
+                    placeholder="Precio"
+                    class="form-control"
+                    [class.is-valid]="this.form.get('price')?.valid"
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <div class="input-group">
+                  <span class="input-group-text"
+                    ><i class="fas fa-object-group"></i
+                  ></span>
+                  <input
+                    type="number"
+                    min="0"
+                    formControlName="quantity"
+                    placeholder="Cantidad"
+                    class="form-control"
+                    [class.is-valid]="this.form.get('quantity')?.valid"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-success">
+                <i class="fas fa-database mr-2"></i> Agregar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 my-3">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="text-center">Lista Productos</h3>
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered">
+            <thead class="table-dark">
+              <tr class="text-center">
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of listProducts">
+                <td>{{ product.name }}</td>
+                <td>$ {{ product.price }}</td>
+                <td>{{ product.quantity }}</td>
+                <td class="text-center">
+                  <a href="javascript:;">
+                    <i class="fas fa-edit mr-3 text-warning"></i>
+                  </a>
+                  |
+                  <a href="javascript:;" (click)="deletedProduct(product)">
+                    <i class="fas fa-trash-alt ml-3 text-danger"></i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
