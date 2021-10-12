@@ -13,11 +13,11 @@ export class ProductsComponent implements OnInit {
     {name: 'Product_1', price: 85000, quantity: 10}
   ];
   //propiedad para formularios
-  form: FormGroup;
+  ProductsForm: FormGroup;
 
   constructor(private fb: FormBuilder, private toastr: ToastrService) { 
     //declaracion de formulario
-    this.form = this.fb.group({
+    this.ProductsForm = this.fb.group({
       name: ['', Validators.required],
       price: ['', Validators.required],
       quantity: ['', Validators.required]
@@ -28,19 +28,14 @@ export class ProductsComponent implements OnInit {
   }
 
   //funciones nuevas
-  addProduct(){
+  addProduct(product: any){
     //valores del formulario 
-    const product: any = {
-      name: this.form.get('name')?.value,
-      price: this.form.get('price')?.value,
-      quantity: this.form.get('quantity')?.value
-    }
     this.listProducts.push(product)
     this.toastr.success('Formulario Completado', 'Registro Guardado');
-    this.form.reset()
+    this.ProductsForm.reset()
   }
 
-  deletedProduct(item: object){
+  deletedProduct(item: any){
     let index = this.listProducts.indexOf(item)
     this.listProducts.splice(index, 1)
     this.toastr.error('El registro fue eliminado con exito', 'Producto Eliminado')

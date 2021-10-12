@@ -1,25 +1,25 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { AppComponent } from './app.component';
+import { AppRoutingModule, routingComponents } from './app.routing.module';
 import { ToastrModule } from 'ngx-toastr';
 
-import { AppComponent } from './app.component';
-import { ProductsComponent } from './components/products/products.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ProductsComponent
-  ],
+  declarations: [AppComponent, routingComponents],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    FormsModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

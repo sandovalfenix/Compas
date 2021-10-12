@@ -7,7 +7,7 @@
         </div>
 
         <div class="card-body">
-          <form [formGroup]="form" (ngSubmit)="addProduct()">
+          <form [formGroup]="ProductsForm" (ngSubmit)="addProduct(ProductsForm.value)">
             <div class="row my-3">
               <div class="col-12">
                 <div class="input-group my-2">
@@ -19,7 +19,7 @@
                     formControlName="name"
                     placeholder="Nombre Producto"
                     class="form-control"
-                    [class.is-valid]="this.form.get('name')?.valid"
+                    [class.is-valid]="this.ProductsForm.get('name')?.valid"
                   />
                 </div>
               </div>
@@ -33,7 +33,7 @@
                     formControlName="price"
                     placeholder="Precio"
                     class="form-control"
-                    [class.is-valid]="this.form.get('price')?.valid"
+                    [class.is-valid]="this.ProductsForm.get('price')?.valid"
                   />
                 </div>
               </div>
@@ -48,7 +48,7 @@
                     formControlName="quantity"
                     placeholder="Cantidad"
                     class="form-control"
-                    [class.is-valid]="this.form.get('quantity')?.valid"
+                    [class.is-valid]="this.ProductsForm.get('quantity')?.valid"
                   />
                 </div>
               </div>
