@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ProductInterface } from '../../models/product.interface';
 import { ResponseInterface } from '../../models/response.interface';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpContext, HttpHeaders, HttpParams } from '@angular/common/http';
+import { ObjectUnsubscribedError, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -27,10 +27,13 @@ export class ApiService {
     return this.http.put<ResponseInterface>(dir, product);
   }
 
-  deleteProduct(product: ProductInterface): Observable<ResponseInterface> {
+  deleteProduct(product: ProductInterface){
     let dir = this.url + 'product';
-    return this.http.delete<ResponseInterface>(dir, {
-      params: { id_product: product.id_product },
-    });
+    const options = {
+      body: {
+        id_product: product.id_product
+      },
+    };
+    return this.http.delete<ResponseInterface>(dir,options);
   }
 }

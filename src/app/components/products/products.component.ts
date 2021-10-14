@@ -76,8 +76,8 @@ export class ProductsComponent implements OnInit {
   //Eliminar producto
   deletedProduct(product: any) {
     this.api.deleteProduct(product).subscribe((data) => {
-      console.log(data);
-    });
+      console.log(data)
+    })
     let index = this.listProducts.indexOf(product);
     this.listProducts.splice(index, 1);
     this.toastr.error(
